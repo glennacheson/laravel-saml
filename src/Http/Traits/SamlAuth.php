@@ -39,7 +39,8 @@ trait SamlAuth
      */
     protected function metadata($url = false)
     {
-        return $this->getSamlFile(config('saml.idp.metadata'), $url);
+        return response($this->getSamlFile(config('saml.idp.metadata'), $url), 200)
+            ->header('Content-Type', 'application/xml');
     }
     
     /**
